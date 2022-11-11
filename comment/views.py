@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.http import HttpResponseRedirect
 
 from content.models import Entry
@@ -9,6 +9,7 @@ from base.tools import sendmail
 # Create your views here.
 
 def comment(request, id):
+
     try:
         entry = Entry.objects.get(id=id)
     except (Entry.DoesNotExist):
@@ -22,8 +23,8 @@ def comment(request, id):
        'Posted new comment to {}'.format(url),
     )
 
-    comment = Comment(author=request.POST['author'], comment=request.POST['message'], approved=True)
-    comment.entry = entry
-    comment.save()
+    message = Comment(author=request.POST['author'], comment=request.POST['message'], approved=False)
+    message.entry = entry
+    message.save()
 
     return HttpResponseRedirect(url)
