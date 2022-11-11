@@ -24,14 +24,19 @@
                             <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
                                 <div class="d-flex flex-start w-100">
                                     <div class="form-outline w-100">
-                                        <input type="text" name="author" class="form-control" id="author" value="">
+                                        <input type="text" name="author" class="form-control" id="author" value="" required>
                                         <label class="form-label" for="author">Your Name</label>
                                     </div>
                                 </div>
                                 <div class="d-flex flex-start w-100">
                                     <div class="form-outline w-100">
-                                    <textarea class="form-control" id="comment" rows="4"
-                                              style="background: #fff;"></textarea>
+                                        <input type="text" name="email" class="form-control" id="email" value="" required>
+                                        <label class="form-label" for="email">Your Email Address</label>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-start w-100">
+                                    <div class="form-outline w-100">
+                                    <textarea class="form-control" id="comment" rows="4" name="message" style="background: #fff;" required></textarea>
                                         <label class="form-label" for="comment">Message</label>
                                     </div>
                                 </div>
