@@ -31,17 +31,17 @@ def comment(request, id):
         author = request.POST['author']
         try:
             validate_email(email)
-            sendmail.send(
-                email,
-                'Mew Comment',
-                'Posted new comment to {}'.format(url),
-            )
+            # sendmail.send(
+            #    email,
+            #    'Mew Comment',
+            #    'Posted new comment to {}'.format(url),
+            # )
 
             message = Comment(author=author, comment=request.POST['message'], approved=True)
             message.entry = entry
             message.save()
 
-            messages.success(request, _('You message has been sent successfully.'), extra_tags='alert alert-success')
+            messages.success(request, _('You message has been published successfully.'), extra_tags='alert alert-success')
 
         except(ValidationError):
             messages.error(request, _('Invalid email address.'), extra_tags='alert alert-danger')

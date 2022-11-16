@@ -1,9 +1,7 @@
 {% extends "index.html" %}
 {% block content %}
+    <small style="float: right;"><a href="#comment-form">Leave a comment</a></small>
     <small class="text-muted">{{ entry.created_at|date:"F d, Y H:i" }}</small>
-    <p class="article-content">{{ entry.content|linebreaks|urlize }}</p>
-    <p>
-        <a href="#comment-form">Leave a comment</a>
-    </p>
+    <div class="article-content text-justify">{{ entry.content|linebreaks|urlize }}</div>
     {% include 'comment.html' %}
 {% endblock content %}

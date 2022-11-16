@@ -34,6 +34,8 @@ body {
 
   .article-content {
     margin-bottom: 5px;
+    margin-top: 15px;
+    display: block;
   }
 
   .media-body small {
@@ -63,6 +65,12 @@ body {
     height: 25px;
     vertical-align: middle;
   }
+
   .article-comments {
     width: 100%;
+  }
+
+  .pagination-info {
+    margin-bottom: 5px;
+    display: block;
   }
