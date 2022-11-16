@@ -15,13 +15,31 @@ import environ
 
 env = environ.Env()
 environ.Env.read_env()
+"""
+Configuration help see 
+https://docs.djangoproject.com/en/3.2/topics/email/#smtp-backend
+"""
 
-EMAIL_HOST = env("SMTP_HOST")
-EMAIL_PORT = env('SMTP_PORT')
-EMAIL_USERNAME = env('SMTP_USERNAME')
-EMAIL_PASSWORD = env('SMTP_PASSWORD')
-EMAIL_SENDER = env('SENDER')
-EMAIL_RECEIVER = env('RECEIVER')
+# custom config
+# EMAIL_HOST = env("SMTP_HOST")
+# EMAIL_PORT = env('SMTP_PORT')
+# EMAIL_USERNAME = env('SMTP_USERNAME')
+# EMAIL_PASSWORD = env('SMTP_PASSWORD')
+# EMAIL_TLS = env('USE_TLS')
+# EMAIL_SENDER = env('SENDER')
+# EMAIL_RECEIVER = env('RECEIVER')
+
+# for backend
+# EMAIL_BACKEND = env('EMAIL_BACKEND')
+# EMAIL_HOST = env("SMTP_HOST")
+# EMAIL_POST = env('SMTP_PORT')
+# EMAIL_USE_TLS = env('USE_TLS')
+# EMAIL_HOST_USER = env('SMTP_USERNAME')
+# EMAIL_HOST_PASSWORD = env('SMTP_PASSWORD')
+
+# for development only
+EMAIL_BACKEND = env('EMAIL_BACKEND')
+EMAIL_FILE_PATH = env('EMAIL_FILE_PATH')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
