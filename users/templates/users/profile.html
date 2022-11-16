@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% load static %}
+<div class="content-section shadow-sm">
+    <div class="media">
+        {# <img class="rounded-circle account-img" style="width: 80px; height: 80px" src="{{ user.profile.image.url }}"> #}
+        <img class="rounded-circle shadow-1-strong me-3 account-img"
+                                 src="{% static 'images/AwxR.png' %}" alt="avatar" width="80"
+                                 height="80"/>
+        <div class="media-body">
+            <h2 class="account-heading">{{ user.username }}</h2>
+            <p>{{ user.email }}</p>
+            <p>{{ user.profile.date_of_birth|date:"M d, Y" }}</p>
+            {% if user.first_name %}<p>{{ user.first_name }}</p>{% endif %}
+            {% if user.last_name %}<p>{{ user.last_name }}</p>{% endif %}
+        </div>
+    </div>
+    <!-- FORM HERE -->
+</div>
+{% endblock content %}

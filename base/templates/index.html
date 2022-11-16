@@ -32,6 +32,21 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'about' %}">About</a>
             </li>
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'register' %}">Register</a>
+                </li>
+            {% endif %}
           </ul>
           <span class="navbar-text">
             Created with Alexander Sh
@@ -46,13 +61,18 @@
             {% endif %}
             {% block content %}
                 {% for entry in entries %}
-                    <article class="media content-section">
+                    <article class="media content-section shadow-sm">
                         <div class="media-body">
                           <div class="article-metadata">
                             <small class="text-muted">{{ entry.created_at|date:"F d, Y H:i" }}</small>
                           </div>
                           <h2><a class="article-title" href="{% url 'show' entry.id  %}">{{ entry.title }}</a></h2>
-                          <p class="article-content">{{ entry.content|slice:"0:150" }}...</p>
+                            <p class="article-content">
+                                {{ entry.content|slice:"0:150" }}...
+                            </p>
+                            <small>
+                               <a href="{% url 'show' entry.id  %}#comments">Comments: {{ entry.comments.all.count }}</a>
+                            </small>
                         </div>
                     </article>
                 {% endfor %}

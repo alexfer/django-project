@@ -1,6 +1,6 @@
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
@@ -23,15 +23,21 @@ def comment(request, id):
     if not request.POST['author'] or not request.POST['message'] or not request.POST['email']:
         messages.error(request, _('All fields cannot be empty.'), extra_tags='alert alert-danger')
     else:
+
+        if not request.user.is_authenticated:
+            return redirect('login')
+
+        email = request.POST['email']
+        author = request.POST['author']
         try:
-            validate_email(request.POST['email'])
+            validate_email(email)
             sendmail.send(
-                request.POST.get('email'),
+                email,
                 'Mew Comment',
                 'Posted new comment to {}'.format(url),
             )
 
-            message = Comment(author=request.POST['author'], comment=request.POST['message'], approved=False)
+            message = Comment(author=author, comment=request.POST['message'], approved=True)
             message.entry = entry
             message.save()
 

@@ -11,7 +11,10 @@ class Comment(models.Model):
     comment = models.TextField()
     approved = models.BooleanField(default=False)
     entry = models.ForeignKey(
-        Entry, on_delete=models.CASCADE)
+        Entry,
+        on_delete=models.CASCADE,
+        related_name='comments',
+    )
     created_at = models.DateTimeField(default=timezone.now)
 
     class Meta:

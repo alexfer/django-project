@@ -1,12 +1,15 @@
 from django.shortcuts import render
 from content.models import Entry
+from django.db import connection
 
 
 # Create your views here.
 
 def index(request):
+    entries = Entry.objects.all().order_by('-id')[:10:1]
+
     context = {
-        'entries': Entry.objects.all().order_by('-id')[:10:1],
+        'entries': entries,
         'title': 'Latest News',
     }
 
