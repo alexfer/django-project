@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from content.models import Entry
@@ -69,12 +70,25 @@ def change(request, id):
     if request.method == 'POST':
         content = request.POST['content']
         title = request.POST['title']
+        created_at = request.POST['created_at']
+
+        try:
+            datetime.strptime(created_at, '%Y-%m-%d %H:%M')
+        except ValueError:
+            messages.error(
+                request,
+                _('Incorrect date format, should be YYYY-MM-DD HH:MM'),
+                extra_tags='alert alert-danger'
+            )
+            return redirect('change-entry', id=id)
         if not title or not content:
             messages.error(request, _('All fields cannot be empty.'), extra_tags='alert alert-danger')
             return render(request, 'content/form.html', {})
         else:
             entry.title = title
             entry.content = content
+            entry.created_at = datetime.strptime(created_at, "%Y-%m-%d %H:%M")
+            entry.updated_at = datetime.now()
             entry.save()
             return redirect('collection-entries')
     else:

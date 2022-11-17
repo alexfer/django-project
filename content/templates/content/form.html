@@ -7,16 +7,18 @@
             <legend class="border-bottom mb-4">{{ title }} Entry</legend>
             {% if messages %}
                 {% for message in messages %}
-                <div>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+                <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
                 {% endfor %}
             {% endif %}
             <div class="card-footer py-3 border-0">
+                {% if entry.created_at %}
                 <div class="d-flex flex-start w-100">
                     <div class="form-outline w-100">
-                        <input type="text" name="created_at" class="form-control" id="created_at" value="{{ entry.created_at }}" required="">
-                        <label class="form-label" for="created_at">Title*</label>
+                        <input type="text" name="created_at" class="form-control" id="created_at" value="{{ entry.created_at|date:'Y-m-d H:i' }}" required="">
+                        <label class="form-label" for="created_at">Date*</label>
                     </div>
                 </div>
+                {% endif %}
                 <div class="d-flex flex-start w-100">
                     <div class="form-outline w-100">
                         <input type="text" name="title" class="form-control" id="title" value="{{ entry.title }}" required="">
