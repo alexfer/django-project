@@ -26,6 +26,11 @@ Install requirements
 
 `$ pip install -r requirements.txt`
 
+Create .env file abd configure
+[(SMTP config see)](https://docs.djangoproject.com/en/3.2/topics/email/#smtp-backend)
+
+`$ cp app/.env.example app/.env `
+
 Run migrations for Database 
 
 `$ python manage.py makemigrations`
@@ -45,12 +50,6 @@ eg.
     Email: admin@example.com
     
     Password: <your password>
-
-Configuration
-
-[(SMTP config see)](https://docs.djangoproject.com/en/3.2/topics/email/#smtp-backend)
-
-`$ cp .env.example .env `
 
 All Set!
 
