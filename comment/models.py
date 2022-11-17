@@ -3,9 +3,6 @@ from django.utils import timezone
 from content.models import Entry
 
 
-# Create your models here.
-
-
 class Comment(models.Model):
     author = models.CharField(max_length=200)
     comment = models.TextField()
