@@ -8,7 +8,7 @@
 
 `$ git clone https://github.com/Akash1362000/django_project_blogapp.git`
 
-`$ cd news/`
+`$ cd app/`
 
 If virtualenv is not installed [(What is virtualenv?)](https://www.youtube.com/watch?v=N5vscPTWKOk&t=313s):
 

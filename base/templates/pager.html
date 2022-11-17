@@ -7,7 +7,7 @@
         {% if entries.number > 3 %}
             <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
             {% if entries.number > 4 %}
-                <li class="page-item"><span class="page-link">...</span></li>
+                <li class="page-item disabled"><span class="page-link">...</span></li>
             {% endif %}
         {% endif %}
       {% endif %}
@@ -20,7 +20,7 @@
       {% endfor %}
       {% if entries.has_next %}
         {% if entries.number < entries.paginator.num_pages|add:'-3' %}
-            <li class="page-item"><span class="page-link">...</span>
+            <li class="page-item disabled"><span class="page-link">...</span>
             <li class="page-item"><a class="page-link" href="?page={{ entries.paginator.num_pages }}">{{ entries.paginator.num_pages }}</a></li>
           {% elif entries.number < entries.paginator.num_pages|add:'-2' %}
             <li class="page-item"><a class="page-link" href="?page={{ entries.paginator.num_pages }}">{{ entries.paginator.num_pages }}</a></li>

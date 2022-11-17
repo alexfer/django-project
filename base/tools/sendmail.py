@@ -1,4 +1,4 @@
-import news.settings as smtp
+import app.settings as smtp
 import smtplib
 import ssl
 
