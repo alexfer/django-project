@@ -67,24 +67,7 @@
             {% if title %}
                 <h1>{{ title }}</h1>
             {% endif %}
-            {% block content %}
-                {% for entry in entries %}
-                    <article class="media content-section shadow-sm">
-                        <div class="media-body">
-                          <div class="article-metadata">
-                              <small style="float: right">
-                               <a href="{% url 'details' entry.id  %}#comments">Comments: {{ entry.comments.all.count }}</a>
-                            </small>
-                            <small class="text-muted">{{ entry.created_at|date:"F d, Y H:i" }}</small>
-                          </div>
-                          <h2><a class="article-title" href="{% url 'details' entry.id  %}">{{ entry.title }}</a></h2>
-                            <p class="article-content">
-                                {{ entry.content|slice:"0:150" }}...
-                            </p>
-                        </div>
-                    </article>
-                {% endfor %}
-            {% endblock %}
+            {% block content %}{% endblock %}
         </div>
         <div class="col-md-4">
           <div class="content-section">

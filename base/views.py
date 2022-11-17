@@ -11,7 +11,7 @@ def index(request):
         'entries': entries,
     }
 
-    return render(request, 'index.html', context)
+    return render(request, 'home.html', context)
 
 
 def about(request):
