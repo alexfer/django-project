@@ -9,7 +9,6 @@ def index(request):
 
     context = {
         'entries': entries,
-        'title': 'Latest Entries',
     }
 
     return render(request, 'index.html', context)
@@ -21,5 +20,5 @@ def about(request):
         description = file.read()
     else:
         description = 'About text'
-    return render(request, 'about.html', {'title': 'About', 'description': description})
+    return render(request, 'about.html', {'description': description})
 

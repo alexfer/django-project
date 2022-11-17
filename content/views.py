@@ -20,7 +20,6 @@ def details(request, id):
 
     context = {
         'entry': entry,
-        'title': entry.title,
         'comments': comments,
     }
 
