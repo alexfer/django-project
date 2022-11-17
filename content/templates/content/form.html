@@ -4,28 +4,28 @@
     <form method="POST">
         {% csrf_token %}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Create Entry</legend>
+            <legend class="border-bottom mb-4">{{ title }} Entry</legend>
             {% if messages %}
                 {% for message in messages %}
-                <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+                <div>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
                 {% endfor %}
             {% endif %}
             <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
                 <div class="d-flex flex-start w-100">
                     <div class="form-outline w-100">
-                        <input type="text" name="title" class="form-control" id="title" value="" required="">
+                        <input type="text" name="title" class="form-control" id="title" value="{{ entry.title }}" required="">
                         <label class="form-label" for="title">Title*</label>
                     </div>
                 </div>
                 <div class="d-flex flex-start w-100">
                     <div class="form-outline w-100">
                         <textarea class="form-control" id="content" rows="4" name="content"
-                                  style="background: #fff;" required=""></textarea>
+                                  style="background: #fff;" required="">{{ entry.content }}</textarea>
                         <label class="form-label" for="content">Content*</label>
                     </div>
                 </div>
                 <div class="float-end mt-2 pt-1">
-                    <button type="submit" class="btn btn-primary btn-sm">Create</button>
+                    <button type="submit" class="btn btn-primary btn-sm">{{ title }}</button>
                 </div>
             </div>
         </fieldset>

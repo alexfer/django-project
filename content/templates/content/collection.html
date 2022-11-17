@@ -2,7 +2,7 @@
 {% block content %}
 <div class="content-section shadow-sm">
     <h1 class="border-bottom mb-4">Collection</h1>
-    <table class="table">
+    <table class="table collection">
       <thead class="thead-dark">
         <tr>
           <th scope="col">ID</th>
@@ -16,12 +16,15 @@
         <tr>
           <th scope="row">{{ entry.id }}</th>
           <td>
-              <a target="_blank" href="{% url 'show' entry.id  %}">{{ entry.title }}</a>
+              <a target="_blank" href="{% url 'show' entry.id %}">{{ entry.title }}</a>
           </td>
           <td>
               <small>{{ entry.created_at|date:"F d, Y H:i" }}</small>
           </td>
-          <td>@mdo</td>
+          <td class="action">
+              <a href="{% url 'change-entry' entry.id %}" title="Change"><i class="bi bi-pencil-square"></i></a>
+              <a href="{% url 'destroy-entry' entry.id %}" title="Destroy"><i class="bi bi-x-circle"></i></a>
+          </td>
         </tr>
       {% endfor %}
       </tbody>

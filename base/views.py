@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from content.models import Entry
-from django.db import connection
 
 
 # Create your views here.
@@ -10,7 +9,7 @@ def index(request):
 
     context = {
         'entries': entries,
-        'title': 'Latest News',
+        'title': 'Latest Entries',
     }
 
     return render(request, 'index.html', context)
