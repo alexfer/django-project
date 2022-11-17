@@ -77,11 +77,11 @@
                         <div class="media-body">
                           <div class="article-metadata">
                               <small style="float: right">
-                               <a href="{% url 'show' entry.id  %}#comments">Comments: {{ entry.comments.all.count }}</a>
+                               <a href="{% url 'details' entry.id  %}#comments">Comments: {{ entry.comments.all.count }}</a>
                             </small>
                             <small class="text-muted">{{ entry.created_at|date:"F d, Y H:i" }}</small>
                           </div>
-                          <h2><a class="article-title" href="{% url 'show' entry.id  %}">{{ entry.title }}</a></h2>
+                          <h2><a class="article-title" href="{% url 'details' entry.id  %}">{{ entry.title }}</a></h2>
                             <p class="article-content">
                                 {{ entry.content|slice:"0:150" }}...
                             </p>

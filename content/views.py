@@ -9,7 +9,7 @@ from django.utils.translation import gettext_lazy as _
 
 # Create your views here.
 
-def show(request, id):
+def details(request, id):
     comments = Comment.objects.filter(entry_id=id, approved=True).order_by('-created_at')
 
     try:
@@ -23,7 +23,7 @@ def show(request, id):
         'comments': comments,
     }
 
-    return render(request, 'show.html', context)
+    return render(request, 'details.html', context)
 
 
 @login_required

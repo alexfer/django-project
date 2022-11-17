@@ -16,7 +16,7 @@
         <tr>
           <th scope="row">{{ entry.id }}</th>
           <td>
-              <a target="_blank" href="{% url 'show' entry.id %}">{{ entry.title }}</a>
+              <a target="_blank" href="{% url 'details' entry.id %}">{{ entry.title }}</a>
           </td>
           <td>
               <small>{{ entry.created_at|date:"F d, Y H:i" }}</small>
