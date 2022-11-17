@@ -1,7 +1,8 @@
+
 # Django App
 
 ### Development
-**Note** : Make sure you have Python version 3.8+
+**Note** : Make sure you have Python version 4.0
 
 ### Environment Setup
 
