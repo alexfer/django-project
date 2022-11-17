@@ -6,7 +6,7 @@
 
 ### Environment Setup
 
-`$ git clone https://github.com/Akash1362000/django_project_blogapp.git`
+`$ git clone https://github.com/alexfer/django-project.git`
 
 `$ cd app/`
 
