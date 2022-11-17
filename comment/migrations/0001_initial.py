@@ -10,7 +10,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('comment', '0001_initial'),
+        ('content', '0001_initial'),
     ]
 
     operations = [
