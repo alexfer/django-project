@@ -23,7 +23,7 @@
               <small>{{ entry.created_at|date:"F d, Y H:i" }}</small>
           </td>
           <td class="action">
-              <a href="{% url 'edit-entry' entry.id %}" title="Change"><i class="bi bi-pencil-square"></i></a>
+              <a href="{% url 'change-entry' entry.id %}" title="Change"><i class="bi bi-pencil-square"></i></a>
               <a href="{% url 'destroy-entry' entry.id %}" title="Destroy"><i class="bi bi-x-circle"></i></a>
           </td>
         </tr>
