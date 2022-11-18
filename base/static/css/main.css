@@ -21,6 +21,10 @@
     color: #ffffff;
   }
 
+  .navbar .navbar-brand {
+    font-size: 2.5rem;
+  }
+
   .content-section {
     background: #ffffff;
     padding: 10px 20px;
@@ -107,4 +111,23 @@
       line-height: 100px; /* Vertically center the text there */
       background-color: #343a40;
       color: #ffffff;
+    }
+
+    .footer-brand {
+        color: #fff;
+        margin-right: 1.5rem;
+    }
+
+    .footer-brand:hover {
+        color: #fff;
+    }
+
+    .alert-error {
+        padding:0;
+    }
+
+    .alert-error ul {
+        color: #721c24;
+        list-style: none;
+        padding-left: 0;
     }
