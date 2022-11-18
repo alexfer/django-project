@@ -2,7 +2,7 @@ from django.urls import include, path
 from users import views as user_views
 from django.contrib.auth import views as auth_views
 
-from users.forms import UserLoginForm, UserPasswordResetForm
+from users.forms import UserLoginForm, UserPasswordResetForm, UserPasswordChangeForm
 
 urlpatterns = [
     path('accounts/profile/', user_views.profile, name='profile'),
@@ -18,7 +18,9 @@ urlpatterns = [
          name='password_reset'
          ),
     path('accounts/reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(
-        template_name='users/password_reset_confirm.html'),
+        template_name='users/password_reset_confirm.html',
+        form_class=UserPasswordChangeForm,
+        ),
          name='password_reset_confirm'
          ),
     path('accounts/password_reset/done/', auth_views.PasswordResetDoneView.as_view(

@@ -1,6 +1,31 @@
 from django import forms
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordResetForm
+from django.contrib.auth.forms import (
+    AuthenticationForm,
+    UserCreationForm,
+    PasswordResetForm,
+    SetPasswordForm
+)
+
+
+class UserPasswordChangeForm(SetPasswordForm):
+    new_password1 = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'form-control',
+    }), label='New Password',
+        help_text='<small class="form-text text-muted">'
+                  'Your password can’t be too similar to your other personal information.<br>'
+                  'Your password must contain at least 8 characters.<br>'
+                  'Your password can’t be a commonly used password.<br>'
+                  'Your password can’t be entirely numeric.'
+                  '</small>')
+
+    new_password2 = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'form-control',
+    }), label='New password confirmation')
+
+    class Meta:
+        model = User
+        fields = ['new_password1', 'new_password2']
 
 
 class UserPasswordResetForm(PasswordResetForm):
@@ -15,10 +40,6 @@ class UserPasswordResetForm(PasswordResetForm):
 
 
 class UserLoginForm(AuthenticationForm):
-
-    def __init__(self, *args, **kwargs):
-        super(UserLoginForm, self).__init__(*args, **kwargs)
-
     username = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
         'placeholder': 'Username',
