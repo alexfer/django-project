@@ -1,8 +1,8 @@
-from django.urls import include, path
+from django.urls import path
 from users import views as user_views
 from django.contrib.auth import views as auth_views
 
-from users.forms import UserLoginForm, UserPasswordResetForm, UserPasswordChangeForm
+from users.forms import UserLoginForm, UserPasswordResetForm, UserSetPasswordForm
 
 urlpatterns = [
     path('accounts/profile/', user_views.profile, name='profile'),
@@ -19,7 +19,7 @@ urlpatterns = [
          ),
     path('accounts/reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(
         template_name='users/password_reset_confirm.html',
-        form_class=UserPasswordChangeForm,
+        form_class=UserSetPasswordForm,
         ),
          name='password_reset_confirm'
          ),
@@ -31,5 +31,8 @@ urlpatterns = [
         template_name='users/password_reset_complete.html'),
          name='password_reset_complete'
          ),
-    path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
+    path('logout/', auth_views.LogoutView.as_view(
+        template_name='users/logout.html'),
+         name='logout'
+         ),
 ]

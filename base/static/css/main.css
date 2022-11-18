@@ -125,9 +125,16 @@
     .alert-error {
         padding:0;
     }
-
+    .help-block {
+        margin-bottom: 0;
+    }
     .alert-error ul {
         color: #721c24;
         list-style: none;
         padding-left: 0;
+    }
+
+    .help-block strong {
+        color: #721c24;
+        font-weight: normal;
     }

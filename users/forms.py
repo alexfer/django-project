@@ -9,7 +9,7 @@ from django.contrib.auth.forms import (
 )
 
 
-class UserPasswordChangeForm(SetPasswordForm):
+class UserSetPasswordForm(SetPasswordForm):
     new_password1 = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control',
     }), label='New Password',
