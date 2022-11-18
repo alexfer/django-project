@@ -4,7 +4,8 @@ from django.contrib.auth.forms import (
     AuthenticationForm,
     UserCreationForm,
     PasswordResetForm,
-    SetPasswordForm
+    SetPasswordForm,
+    PasswordChangeForm
 )
 
 
