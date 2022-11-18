@@ -3,6 +3,7 @@
 {% block title %} - {{ title }} Entry {% endblock title %}
 {% block content %}
 <div class="content-section shadow-sm">
+    {% include 'message.html' %}
     <form method="post">
         {% csrf_token %}
         <div class="form-group">

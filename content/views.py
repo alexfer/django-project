@@ -30,11 +30,12 @@ def CreateEntry(request):
 @login_required
 def ChangeEntry(request, id):
 
-    entry = get_object_or_404(Entry, user_id=request.user.id, id=id)
+    entry = Entry.objects.get(user_id=request.user.id, id=id)
 
     if request.method == 'POST':
         form = ChangeEntryForm(request.POST, instance=entry)
         if form.is_valid():
+            messages.success(request, _('Entry successfully updated.'), extra_tags='alert alert-success')
             form.save(commit=True)
             return redirect('edit-entry', entry.id)
     else:
