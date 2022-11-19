@@ -7,8 +7,7 @@
        <legend class="border-bottom mb-1">Delete Entry</legend>
     </fieldset>
     {% csrf_token %}
-    <input type="hidden" value="{{ entry.id }}">
-    <div class="alert alert-warning">Are you sure you want to delete: {{ entry.title }}</div>
+    <div class="alert alert-warning">Are you sure you want to delete: <strong>{{ entry.title }}</strong></div>
     <button type="submit" class="btn btn-danger">Delete</button>
     <a type="button" class="btn btn-light" href="{% url 'collection-entries' %}">Cancel</a>
   </form>
