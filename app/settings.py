@@ -65,10 +65,6 @@ if DEBUG is True:
 # Application definition
 
 INSTALLED_APPS = [
-    # 'base',
-    # 'content',
-    # 'comment',
-    # 'users',
     'users.apps.UsersConfig',
     'base.apps.BaseConfig',
     'comment.apps.CommentConfig',
@@ -116,9 +112,17 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
+    # MySQL Configuration
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT'),
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
     },
 }
 

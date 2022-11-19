@@ -26,8 +26,11 @@ Install requirements
 
 `$ pip install -r requirements.txt`
 
-Create .env file abd configure
-[(SMTP config see)](https://docs.djangoproject.com/en/3.2/topics/email/#smtp-backend)
+Create .env file and configure
+
+[SMTP config see](https://docs.djangoproject.com/en/4.1/topics/email/#smtp-backend)
+
+[Database config see](https://docs.djangoproject.com/en/4.1/ref/databases/)
 
 `$ cp app/.env.example app/.env `
 
