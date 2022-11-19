@@ -10,7 +10,7 @@
                 </small>
                 <small class="text-muted">{{ entry.created_at|date:"F d, Y H:i" }}</small>
               </div>
-              <h2><a class="article-title" href="{% url 'details' entry.id  %}">{{ entry.title }}</a></h2>
+              <h4><a class="article-title" href="{% url 'details' entry.id  %}">{{ entry.title }}</a></h4>
                 <p class="article-content">
                     {{ entry.content|slice:"0:150" }}...
                 </p>

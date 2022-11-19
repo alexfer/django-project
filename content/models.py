@@ -3,7 +3,7 @@ from django.utils import timezone
 
 
 class Entry(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=512)
     content = models.TextField()
     user_id = models.IntegerField(null=False)
     created_at = models.DateTimeField(default=timezone.now)
