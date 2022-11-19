@@ -75,11 +75,16 @@ def collection(request):
 
 
 @login_required
-def destroy(request, id):
+def DestroyEntry(request, id):
     try:
         entry = Entry.objects.get(user_id=request.user.id, id=id)
     except Entry.DoesNotExist:
         return render(request, 'errors/404.html', status=404)
 
-    entry.delete()
-    return redirect('collection-entries')
+    if request.method == 'POST':
+        entry.delete()
+        return redirect('collection-entries')
+
+    return render(request, 'content/delete-entry.html', {
+        'entry': entry,
+    })
