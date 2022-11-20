@@ -1,7 +1,7 @@
 {% extends "index.html" %}
 {% block title %} - Home {% endblock title %}
 {% block content %}
-    {% for entry in entries %}
+    {% for entry in object_list %}
         <article class="media content-section shadow-sm">
             <div class="media-body">
               <div class="article-metadata">
@@ -10,7 +10,7 @@
                 </small>
                 <small class="text-muted">{{ entry.created_at|date:"F d, Y H:i" }}</small>
               </div>
-              <h4><a class="article-title" href="{% url 'details' entry.id  %}">{{ entry.title }}</a></h4>
+              <h4><a class="article-title" href="{% url 'details' entry.id  %}" title="{{ entry.title }}">{{ entry.title }}</a></h4>
                 <p class="article-content">
                     {{ entry.content|slice:"0:150" }}...
                 </p>
