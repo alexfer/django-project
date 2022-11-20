@@ -21,15 +21,13 @@ def comment(request, id):
 
     url = request.META.get('HTTP_REFERER')
 
-    if not request.POST['author'] or not request.POST['message'] or not request.POST['email']:
-        messages.error(request, _('All fields cannot be empty.'), extra_tags='alert alert-danger')
+    if not request.POST['message']:
+        messages.error(request, _('Field `message` cannot be empty.'), extra_tags='alert alert-danger')
     else:
-        email = request.POST['email']
-        author = request.POST['author']
         try:
-            validate_email(email)
-            message = Comment(author=author, comment=request.POST['message'], approved=True)
+            message = Comment(user_id=request.user.id, comment=request.POST['message'], approved=True)
             message.entry = entry
+            message.user = request.user
             message.save()
 
             messages.success(

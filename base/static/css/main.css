@@ -102,6 +102,10 @@
     text-decoration: none;
   }
 
+  .account-img {
+    margin-right:20px;
+  }
+
   .footer {
       position: absolute;
       bottom: 0;
@@ -133,7 +137,7 @@
         padding-left: 0;
     }
 
-    .help-block strong {
-        color: #721c24;
+    .help-block strong, .invalid-feedback strong {
+        color: #dc3545;
         font-weight: normal;
     }

@@ -1,10 +1,10 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 from content.models import Entry
 
 
 class Comment(models.Model):
-    author = models.CharField(max_length=200)
     comment = models.TextField()
     approved = models.BooleanField(default=False)
     entry = models.ForeignKey(
@@ -12,6 +12,7 @@ class Comment(models.Model):
         on_delete=models.CASCADE,
         related_name='comments',
     )
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments',)
     created_at = models.DateTimeField(default=timezone.now)
 
     class Meta:

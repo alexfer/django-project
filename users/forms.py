@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
+from .models import Profile
 from django.contrib.auth.forms import (
     AuthenticationForm,
     UserCreationForm,
@@ -86,3 +87,34 @@ class UserRegisterForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
+
+
+class UserUpdateForm(forms.ModelForm):
+    first_name = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'First name',
+    }), required=False)
+
+    last_name = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Last name',
+    }), required=False)
+
+    class Meta:
+        model = Profile
+        fields = ['first_name', 'last_name']
+
+
+class ProfileUpdateForm(forms.ModelForm):
+    date_of_birth = forms.DateField(widget=forms.DateInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Birthday',
+    }), required=False)
+
+    image = forms.FileField(widget=forms.FileInput(attrs={
+        'class': 'form-control-file',
+    }), required=False)
+
+    class Meta:
+        model = Profile
+        fields = ['date_of_birth', 'image']
