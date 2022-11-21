@@ -12,7 +12,7 @@ class Comment(models.Model):
         on_delete=models.CASCADE,
         related_name='comments',
     )
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments',)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments', )
     created_at = models.DateTimeField(default=timezone.now)
 
     class Meta:

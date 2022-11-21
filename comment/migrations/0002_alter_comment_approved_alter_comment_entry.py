@@ -5,7 +5,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('content', '0001_initial'),
         ('comment', '0001_initial'),
@@ -20,6 +19,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='comment',
             name='entry',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='comments', to='content.entry'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='comments',
+                                    to='content.entry'),
         ),
     ]

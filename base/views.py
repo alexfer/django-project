@@ -17,4 +17,3 @@ def AboutStaticView(request):
     else:
         description = 'About text'
     return render(request, 'about.html', {'description': description})
-

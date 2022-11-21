@@ -20,7 +20,8 @@ class Migration(migrations.Migration):
                 ('image', models.ImageField(default='default.jpg', upload_to='profile_pics')),
                 ('date_of_birth', models.DateField(blank=True)),
                 (
-                'user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                    'user',
+                    models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]

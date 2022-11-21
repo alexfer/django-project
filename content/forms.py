@@ -41,7 +41,7 @@ class _ChangeEntryForm(forms.ModelForm):
     content = forms.CharField(widget=forms.Textarea(attrs={
         'class': 'form-control',
         'placeholder': 'Enter entry content',
-    }), label='Content',)
+    }), label='Content', )
 
     class Meta:
         model = Entry

@@ -11,6 +11,7 @@ class Entry(models.Model):
     """
     @staticmethod
     """
+
     def entry_directory_path(self, filename):
         basename, extension = os.path.splitext(filename)
         name = str(datetime.datetime.now().time()).replace(':', '-').replace('.', '/')

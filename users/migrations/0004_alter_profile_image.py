@@ -5,7 +5,6 @@ import users.models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('users', '0003_alter_profile_date_of_birth_alter_profile_image'),
     ]
@@ -14,6 +13,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='profile',
             name='image',
-            field=models.ImageField(default='default-profile.png', null=True, upload_to=users.models.Profile.profile_directory_path),
+            field=models.ImageField(default='default-profile.png', null=True,
+                                    upload_to=users.models.Profile.profile_directory_path),
         ),
     ]

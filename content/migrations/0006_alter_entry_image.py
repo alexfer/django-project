@@ -5,7 +5,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('content', '0005_alter_entry_image'),
     ]
@@ -14,6 +13,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='entry',
             name='image',
-            field=models.ImageField(default='placeholder.png', null=True, upload_to=content.models.Entry.entry_directory_path),
+            field=models.ImageField(default='placeholder.png', null=True,
+                                    upload_to=content.models.Entry.entry_directory_path),
         ),
     ]

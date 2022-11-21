@@ -54,8 +54,6 @@ def details(request, id):
     except Entry.DoesNotExist:
         return render(request, 'errors/404.html', status=404)
 
-    print(comments)
-
     context = {
         'entry': entry,
         'comments': comments,
