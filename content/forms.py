@@ -11,10 +11,13 @@ class _CreateEntryForm(forms.ModelForm):
         'class': 'form-control',
         'placeholder': 'Enter entry content',
     }), label='Content')
+    image = forms.FileField(widget=forms.FileInput(attrs={
+        'class': 'form-control-file',
+    }), required=False)
 
     class Meta:
         model = Entry
-        fields = ('title', 'content',)
+        fields = ('title', 'content', 'image',)
 
 
 class CreateEntryForm(_CreateEntryForm):

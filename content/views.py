@@ -11,10 +11,10 @@ from .forms import CreateEntryForm, ChangeEntryForm
 @login_required
 def CreateEntry(request):
     if request.method == 'POST':
-        form = CreateEntryForm(request.POST)
+        form = CreateEntryForm(request.POST, request.FILES)
         if form.is_valid():
             entry = form.save(commit=False)
-            entry.user_id = request.user.id
+            entry.user = request.user
             entry.save()
             return redirect('details', entry.id)
     else:
@@ -28,7 +28,6 @@ def CreateEntry(request):
 
 @login_required
 def ChangeEntry(request, id):
-
     entry = Entry.objects.get(user_id=request.user.id, id=id)
 
     if request.method == 'POST':
