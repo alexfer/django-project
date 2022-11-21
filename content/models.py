@@ -1,5 +1,6 @@
 import datetime
 import os
+import uuid
 
 from PIL import Image
 from django.contrib.auth.models import User
@@ -8,16 +9,12 @@ from django.utils import timezone
 
 
 class Entry(models.Model):
-    """
-    @staticmethod
-    """
-
     def entry_directory_path(self, filename):
         basename, extension = os.path.splitext(filename)
         name = str(datetime.datetime.now().time()).replace(':', '-').replace('.', '/')
-        return 'files/{dir}/{basename}{ext}'.format(
+        return 'files/{dir}/{name}{ext}'.format(
             dir=str(datetime.datetime.now().date()),
-            basename=name,
+            name=name + '-' + str(uuid.uuid4())[:8],
             ext=extension
         )
 
@@ -34,9 +31,14 @@ class Entry(models.Model):
     def save(self, *args, **kwargs):
         super(Entry, self).save(*args, **kwargs)
 
-        img = Image.open(self.image.path)
+        image = Image.open(self.image.path)
+        big_size = (1024, 768)
 
-        if img.height > 1024 or img.width > 768:
-            output_size = (1024, 768)
-            img.thumbnail(output_size)
-            img.save(self.image.path)
+        if image.height > 1024 or image.width > 768:
+            image.thumbnail(big_size)
+            image.save(self.image.path)
+
+    def delete(self, *args, **kwargs):
+        if os.path.isfile(self.image.path):
+            os.remove(self.image.path)
+        super(Entry, self).delete(*args, **kwargs)

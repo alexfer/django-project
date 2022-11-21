@@ -9,9 +9,11 @@
         <div class="form-group">
             {{ form|crispy }}
         </div>
+        {% if entry.image %}
         <div class="form-group">
-            <image src="/media/{{ entry.image }}" class="img-fluid"></image>
+            <img src="/media/{{ entry.image }}" class="img-fluid rounded mx-auto d-block"/>
         </div>
+        {% endif %}
         <div class="float-end mt-2 pt-1">
             <button type="submit" class="btn btn-primary btn-sm">{{ title }}</button>
         </div>
