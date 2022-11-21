@@ -41,6 +41,7 @@ def ChangeEntry(request, id):
 
     return render(request, 'content/entry-form.html', {
         'form': form,
+        'entry': entry,
         'title': _('Change Entry'),
     })
 
