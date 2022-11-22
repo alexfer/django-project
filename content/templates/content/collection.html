@@ -29,6 +29,10 @@
                     <a href="{% url 'destroy-entry' entry.id %}" title="Destroy"><i class="bi bi-x-circle"></i></a>
                 </td>
             </tr>
+        {% empty %}
+            <tr>
+                <td scope="row text-center">Nothing to display</td>
+            </tr>
         {% endfor %}
         </tbody>
     </table>

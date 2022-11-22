@@ -10,6 +10,6 @@
 {% if entry.image %}
 <img src="/media/{{ entry.image }}" class="img-fluid mt-4 rounded mx-auto d-block"/>
 {% endif %}
-<div class="article-content text-justify mb-4">{% autoescape off %}{{ entry.content|linebreaks }}{% endautoescape %}</div>
+<div class="article-content text-justify mb-4">{{ entry.content|linebreaks|urlize }}</div>
 {% include 'comment.html' %}
 {% endblock content %}

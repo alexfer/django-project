@@ -1,9 +1,10 @@
 {% extends "index.html" %}
-{% block title %} - Home {% endblock title %}
+{% block title %} - All entries {% endblock title %}
 {% block content %}
 {% now "Y-m-d" as current_date %}
 {% load tz %}
-{% for entry in object_list %}
+<h4>All entries</h4>
+{% for entry in entries %}
 <article class="media content-section shadow-sm">
     <div class="media-body">
         <div class="article-metadata">
@@ -28,5 +29,5 @@
     </div>
 </article>
 {% endfor %}
-<div class="mb-4"><a href="{% url 'entries' %}">All entries</a></div>
+{% include 'pager.html' with entries=page_obj %}
 {% endblock content %}

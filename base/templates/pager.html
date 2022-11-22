@@ -22,11 +22,9 @@
         {% if entries.has_next %}
         {% if entries.number < entries.paginator.num_pages|add:'-3' %}
         <li class="page-item disabled"><span class="page-link">...</span>
-        <li class="page-item"><a class="page-link" href="?page={{ entries.paginator.num_pages }}">{{
-            entries.paginator.num_pages }}</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ entries.paginator.num_pages }}">{{ entries.paginator.num_pages }}</a></li>
         {% elif entries.number < entries.paginator.num_pages|add:'-2' %}
-        <li class="page-item"><a class="page-link" href="?page={{ entries.paginator.num_pages }}">{{
-            entries.paginator.num_pages }}</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ entries.paginator.num_pages }}">{{ entries.paginator.num_pages }}</a></li>
         {% endif %}
         <li class="page-item"><a class="page-link" href="?page={{ entries.next_page_number }}"
                                  title="Next Page">&raquo;</a></li>
