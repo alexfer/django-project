@@ -1,10 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 
-from content.models import Entry
+from modules.content.models import Entry
 from django.views.generic.list import ListView
 from django.contrib import messages
-from comment.models import Comment
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import gettext_lazy as _
 from .forms import CreateEntryForm, ChangeEntryForm

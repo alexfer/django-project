@@ -66,10 +66,10 @@ if DEBUG is True:
 # Application definition
 
 INSTALLED_APPS = [
-    'users.apps.UsersConfig',
-    'base.apps.BaseConfig',
-    'comment.apps.CommentConfig',
-    'content.apps.ContentConfig',
+    'modules.users.apps.UsersConfig',
+    'modules.base.apps.BaseConfig',
+    'modules.comment.apps.CommentConfig',
+    'modules.content.apps.ContentConfig',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',

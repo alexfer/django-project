@@ -1,7 +1,6 @@
 from django import forms
 
-from comment.models import Comment
-from content.models import Entry
+from modules.content.models import Entry
 
 
 class _CreateEntryForm(forms.ModelForm):

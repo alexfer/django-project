@@ -1,11 +1,11 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 
-from comment.forms import CommentForm
-from content.models import Entry
+from modules.comment.forms import CommentForm
+from modules.content.models import Entry
 from django.views.generic.list import ListView
 from django.contrib import messages
-from comment.models import Comment
+from modules.comment.models import Comment
 from django.utils.translation import gettext_lazy as _
 
 

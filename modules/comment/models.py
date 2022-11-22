@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
-from content.models import Entry
+from modules.content.models import Entry
 
 
 class Comment(models.Model):

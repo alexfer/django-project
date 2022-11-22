@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from content.models import Entry
+from modules.content.models import Entry
 from django.views.generic.list import ListView
 
 
