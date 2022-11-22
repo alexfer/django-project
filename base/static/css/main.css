@@ -141,3 +141,8 @@
         color: #dc3545;
         font-weight: normal;
     }
+
+    p.invalid-feedback {
+        margin-bottom: 0;
+        margin-top: 0;
+    }

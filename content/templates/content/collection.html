@@ -5,8 +5,7 @@
     <h1 class="border-bottom mb-4">Collection</h1>
     <table class="table collection">
         <thead class="thead-dark">
-            <tr>
-                <th scope="col">ID</th>
+            <tr class="text-center">
                 <th scope="col">Title</th>
                 <th scope="col">Created</th>
                 <th scope="col">Comments</th>
@@ -16,11 +15,10 @@
         <tbody>
         {% for entry in entries %}
             <tr>
-                <th scope="row">{{ entry.id }}</th>
-                <td>
+                <td scope="row">
                     <a target="_blank" href="{% url 'details' entry.slug %}">{{ entry.title }}</a>
                 </td>
-                <td>
+                <td class="text-nowrap">
                     <small>{{ entry.created_at|date:"Y-m-d H:i" }}</small>
                 </td>
                 <td class="text-center align-middle">

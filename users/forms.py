@@ -10,6 +10,30 @@ from django.contrib.auth.forms import (
 )
 
 
+class UserPasswordChangedForm(PasswordChangeForm):
+    old_password = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'form-control',
+    }), label='Current password')
+
+    new_password1 = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'form-control',
+    }), label='New password',
+        help_text='<small class="form-text text-muted">'
+                  'Your password can’t be too similar to your other personal information.<br>'
+                  'Your password must contain at least 8 characters.<br>'
+                  'Your password can’t be a commonly used password.<br>'
+                  'Your password can’t be entirely numeric.'
+                  '</small>')
+
+    new_password2 = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'form-control',
+    }), label='New password confirmation')
+
+    class Meta:
+        model = User
+        fields = ['old_password', 'new_password1', 'new_password2']
+
+
 class UserSetPasswordForm(SetPasswordForm):
     new_password1 = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control',
