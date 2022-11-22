@@ -57,6 +57,9 @@ def details(request, slug):
 
     comments = Comment.objects.filter(entry_id=entry.id, approved=True).order_by('-created_at')
 
+    if not request.user.is_authenticated:
+        return redirect('login')
+
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
