@@ -1,5 +1,8 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
+
+from comment.forms import CommentForm
 from content.models import Entry
 from django.contrib import messages
 from comment.models import Comment
@@ -54,8 +57,28 @@ def details(request, slug):
 
     comments = Comment.objects.filter(entry_id=entry.id, approved=True).order_by('-created_at')
 
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+
+            comment = form.save(commit=False)
+            comment.entry = entry
+            comment.user = request.user
+            comment.approved = True
+            comment.save()
+
+            messages.success(
+                request,
+                _('You message has been published successfully.'),
+                extra_tags='alert alert-success',
+            )
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    else:
+        form = CommentForm()
+
     context = {
         'entry': entry,
+        'form': form,
         'comments': comments,
     }
 

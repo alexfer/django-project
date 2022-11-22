@@ -5,28 +5,32 @@
     <h1 class="border-bottom mb-4">Collection</h1>
     <table class="table collection">
         <thead class="thead-dark">
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Title</th>
-            <th scope="col">Created</th>
-            <th scope="col">Action</th>
-        </tr>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Created</th>
+                <th scope="col">Comments</th>
+                <th scope="col">Action</th>
+            </tr>
         </thead>
         <tbody>
         {% for entry in entries %}
-        <tr>
-            <th scope="row">{{ entry.id }}</th>
-            <td>
-                <a target="_blank" href="{% url 'details' entry.slug %}">{{ entry.title }}</a>
-            </td>
-            <td>
-                <small>{{ entry.created_at|date:"F d, Y H:i" }}</small>
-            </td>
-            <td class="action">
-                <a href="{% url 'change-entry' entry.slug %}" title="Change"><i class="bi bi-pencil-square"></i></a>
-                <a href="{% url 'destroy-entry' entry.id %}" title="Destroy"><i class="bi bi-x-circle"></i></a>
-            </td>
-        </tr>
+            <tr>
+                <th scope="row">{{ entry.id }}</th>
+                <td>
+                    <a target="_blank" href="{% url 'details' entry.slug %}">{{ entry.title }}</a>
+                </td>
+                <td>
+                    <small>{{ entry.created_at|date:"Y-m-d H:i" }}</small>
+                </td>
+                <td class="text-center align-middle">
+                    <a target="_blank" href="#">{{ entry.comments.all.count }}</a>
+                </td>
+                <td class="action">
+                    <a href="{% url 'change-entry' entry.slug %}" title="Change"><i class="bi bi-pencil-square"></i></a>
+                    <a href="{% url 'destroy-entry' entry.id %}" title="Destroy"><i class="bi bi-x-circle"></i></a>
+                </td>
+            </tr>
         {% endfor %}
         </tbody>
     </table>

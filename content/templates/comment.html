@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}
 <section style="background-color: #eee;">
     <div class="container my-5 py-5">
         <div class="row d-flex justify-content-center">
@@ -23,30 +24,12 @@
                         <div class="mb-4 mt-3 card p-3">{{ comment.comment|linebreaks|urlize }}</div>
                         {% endfor %}
                         {% include 'message.html' %}
-                        <form method="post" id="comment-form" action="{{ request.build_absolute_uri }}comment/">
+                        <form method="post" id="comment-form">
                             {% csrf_token %}
                             <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
                                 <div class="d-flex flex-start w-100">
                                     <div class="form-outline w-100">
-                                        <input type="text" name="username" class="form-control" id="username"
-                                               value="{{ request.user.username }}" {% if request.user.username %}
-                                               readonly="" {% else %} required="" {% endif %}>
-                                        <label class="form-label" for="username">Your username</label>
-                                    </div>
-                                </div>
-                                <div class="d-flex flex-start w-100">
-                                    <div class="form-outline w-100">
-                                        <input type="text" name="email" class="form-control" id="email"
-                                               value="{{ request.user.email }}" {% if request.user.email %} readonly=""
-                                               {% else %} required="" {% endif %}>
-                                        <label class="form-label" for="email">Your email address</label>
-                                    </div>
-                                </div>
-                                <div class="d-flex flex-start w-100">
-                                    <div class="form-outline w-100">
-                                        <textarea class="form-control" id="comment" rows="4" name="message"
-                                                  style="background: #fff;" required=""></textarea>
-                                        <label class="form-label" for="comment">Message*</label>
+                                        {{ form|crispy }}
                                     </div>
                                 </div>
                                 <div class="float-end mt-2 pt-1">
