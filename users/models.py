@@ -1,4 +1,6 @@
 import os
+import uuid
+
 from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
@@ -8,7 +10,7 @@ class Profile(models.Model):
 
     def profile_directory_path(self, filename):
         basename, extension = os.path.splitext(filename)
-        return 'profile/{id}/{basename}{ext}'.format(id=self.user.id, basename=basename, ext=extension)
+        return 'profile/{id}/{basename}{ext}'.format(id=self.user.id, basename=str(uuid.uuid4())[:8], ext=extension)
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='default-profile.png', upload_to=profile_directory_path, null=True)

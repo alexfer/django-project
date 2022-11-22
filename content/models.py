@@ -6,6 +6,9 @@ from PIL import Image
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
+import unidecode
+from unidecode import unidecode
+from django.template.defaultfilters import slugify
 
 
 class Entry(models.Model):
@@ -22,6 +25,7 @@ class Entry(models.Model):
     content = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(default='placeholder.png', upload_to=entry_directory_path, null=True)
+    slug = models.SlugField(null=True, max_length=512)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=timezone.now)
 
@@ -29,12 +33,13 @@ class Entry(models.Model):
         db_table = "base_entry"
 
     def save(self, *args, **kwargs):
+        self.slug = self.slug or slugify(unidecode(self.title))
         super(Entry, self).save(*args, **kwargs)
 
         image = Image.open(self.image.path)
-        big_size = (1024, 768)
+        big_size = (1024, 1024)
 
-        if image.height > 1024 or image.width > 768:
+        if image.height > 1024 or image.width > 1024:
             image.thumbnail(big_size)
             image.save(self.image.path)
 

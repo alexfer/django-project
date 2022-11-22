@@ -16,7 +16,7 @@ def CreateEntry(request):
             entry = form.save(commit=False)
             entry.user = request.user
             entry.save()
-            return redirect('details', entry.id)
+            return redirect('details', entry.slug)
     else:
         form = CreateEntryForm()
 
@@ -27,15 +27,15 @@ def CreateEntry(request):
 
 
 @login_required
-def ChangeEntry(request, id):
-    entry = Entry.objects.get(user_id=request.user.id, id=id)
+def ChangeEntry(request, slug):
+    entry = Entry.objects.get(user_id=request.user.id, slug=slug)
 
     if request.method == 'POST':
         form = ChangeEntryForm(request.POST, instance=entry)
         if form.is_valid():
             messages.success(request, _('Entry successfully updated.'), extra_tags='alert alert-success')
             form.save(commit=True)
-            return redirect('change-entry', entry.id)
+            return redirect('change-entry', entry.slug)
     else:
         form = ChangeEntryForm(instance=entry)
 
@@ -46,13 +46,13 @@ def ChangeEntry(request, id):
     })
 
 
-def details(request, id):
-    comments = Comment.objects.filter(entry_id=id, approved=True).order_by('-created_at')
-
+def details(request, slug):
     try:
-        entry = Entry.objects.get(id=id)
+        entry = Entry.objects.get(slug=slug)
     except Entry.DoesNotExist:
         return render(request, 'errors/404.html', status=404)
+
+    comments = Comment.objects.filter(entry_id=entry.id, approved=True).order_by('-created_at')
 
     context = {
         'entry': entry,

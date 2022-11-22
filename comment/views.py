@@ -13,9 +13,9 @@ from comment.models import Comment
 # Create your views here.
 
 @login_required
-def comment(request, id):
+def comment(request, slug):
     try:
-        entry = Entry.objects.get(id=id)
+        entry = Entry.objects.get(slug=slug)
     except Entry.DoesNotExist:
         return render(request, 'errors/404.html', status=404)
 
