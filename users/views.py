@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserRegisterForm, ProfileUpdateForm, UserUpdateForm
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 
 from .models import Profile
 
@@ -12,7 +11,7 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
-            user.is_active = False
+            user.is_active = True
             user.save()
             profile = Profile(user_id=user.id)
             profile.save()
