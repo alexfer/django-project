@@ -9,7 +9,7 @@ class HomeListView(ListView):
 
 
 def AboutStaticView(request):
-    file = open('base/data/about.txt', 'r')
+    file = open('modules/base/data/about.txt', 'r')
     if file.mode == 'r':
         description = file.read()
     else:
