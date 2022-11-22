@@ -4,10 +4,8 @@ from django.views.generic.list import ListView
 
 
 class HomeListView(ListView):
-    model = Entry
-    paginate_by = 10
-    ordering = ['-created_at']
     template_name = 'home.html'
+    queryset = Entry.objects.order_by('-created_at')[:10]
 
 
 def AboutStaticView(request):

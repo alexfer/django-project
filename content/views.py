@@ -1,9 +1,10 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from django.core.paginator import Paginator
 
 from comment.forms import CommentForm
 from content.models import Entry
+from django.views.generic.list import ListView
 from django.contrib import messages
 from comment.models import Comment
 from django.contrib.auth.decorators import login_required
@@ -88,16 +89,13 @@ def details(request, slug):
     return render(request, 'details.html', context)
 
 
-@login_required
-def collection(request):
-    entries = Entry.objects.filter(user_id=request.user.id).order_by('-id')
-    paginator = Paginator(entries, 20)
-    page = request.GET.get('page')
-    context = paginator.get_page(page)
+class EntryListView(LoginRequiredMixin, ListView):
+    paginate_by = 20
+    context_object_name = 'entries'
+    template_name = 'content/collection.html'
 
-    return render(request, 'content/collection.html', {
-        'entries': context,
-    })
+    def get_queryset(self):
+        return Entry.objects.filter(user=self.request.user).order_by('-id')
 
 
 @login_required
