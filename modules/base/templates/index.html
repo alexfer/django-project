@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <html lang="en">
 <head>
     <!-- Required meta tags -->
@@ -27,46 +28,46 @@
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav sticky-top mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{% url 'index' %}">{% trans 'Home' %} <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'about' %}">About</a>
+                <a class="nav-link" href="{% url 'about' %}">{% trans 'About' %}</a>
             </li>
             {% if user.is_authenticated %}
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">Profile</a>
+                   aria-haspopup="true" aria-expanded="false">{% trans 'Profile' %}</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{% url 'profile' %}">Edit</a>
-                    <a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a>
+                    <a class="dropdown-item" href="{% url 'profile' %}">{% trans 'Edit' %}</a>
+                    <a class="dropdown-item" href="{% url 'password_change' %}">{% trans 'Change Password' %}</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="entries" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">Entries</a>
+                   aria-haspopup="true" aria-expanded="false">{% trans 'Entries' %}</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{% url 'collection-entries' %}">Collection</a>
-                    <a class="dropdown-item" href="{% url 'create-entry' %}">Create</a>
+                    <a class="dropdown-item" href="{% url 'collection-entries' %}">{% trans 'Collection' %}</a>
+                    <a class="dropdown-item" href="{% url 'create-entry' %}">{% trans 'Create' %}</a>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                <a class="nav-link" href="{% url 'logout' %}">{% trans 'Logout' %}</a>
             </li>
             {% else %}
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'login' %}">Login</a>
+                <a class="nav-link" href="{% url 'login' %}">{% trans 'Login' %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'register' %}">Register</a>
+                <a class="nav-link" href="{% url 'register' %}">{% trans 'Register' %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'password_reset' %}">Reset Password</a>
+                <a class="nav-link" href="{% url 'password_reset' %}">{% trans 'Reset Password' %}</a>
             </li>
             {% endif %}
         </ul>
         <span class="navbar-text">
-            Created with Alexander Sh
-          </span>
+            {% trans 'Created by Alexander Sh' %}
+        </span>
     </div>
 </nav>
 <main role="main" class="container mb-4">
@@ -79,17 +80,17 @@
         </div>
         <div class="col-md-4">
             <div class="content-section">
-                <h3>Top Entries</h3>
-                <p class='text-muted'>some information.</p>
+                <h3>{% trans 'Top Entries' %}</h3>
+                <p class='text-muted'>{% trans 'some information.' %}</p>
                 <ul class="list-group">
-                    <li class="list-group-item list-group-item-light">Top Entries</li>
+                    <li class="list-group-item list-group-item-light">{% trans 'Top Entries' %}</li>
                 </ul>
             </div>
             <div class="content-section">
-                <h3>Top Comments</h3>
-                <p class='text-muted'>some information.</p>
+                <h3>{% trans 'Top Comments' %}</h3>
+                <p class='text-muted'>{% trans 'some information.' %}</p>
                 <ul class="list-group">
-                    <li class="list-group-item list-group-item-light">Top Comments</li>
+                    <li class="list-group-item list-group-item-light">{% trans 'Top Comments' %}</li>
                 </ul>
             </div>
         </div>
@@ -109,7 +110,7 @@
 <footer class="footer">
     <div class="container-fluid pt-4" style="line-height:50px;">
         <a class="footer-brand" href="/"><i class="bi bi-sun"></i></a>
-        <span class="text-muted">Django App &copy; <script>document.write(new Date().getFullYear());</script></span>
+        <span class="text-muted">{% trans 'Django App &copy; <script>document.write(new Date().getFullYear());</script></span>
     </div>
 </footer>
 </body>

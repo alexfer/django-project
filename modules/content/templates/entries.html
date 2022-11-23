@@ -1,5 +1,6 @@
 {% extends "index.html" %}
-{% block title %} - All entries {% endblock title %}
+{% load i18n %}
+{% block title %} - {% trans 'All entries' %} {% endblock title %}
 {% block content %}
 {% now "Y-m-d" as current_date %}
 {% load tz %}
@@ -9,7 +10,7 @@
     <div class="media-body">
         <div class="article-metadata">
             <small style="float: right;">
-                <a href="{% url 'details' entry.slug  %}#comments" title="Comments"><i class="bi bi-chat-right "></i> {{ entry.comments.all.count }}</a>
+                <a href="{% url 'details' entry.slug  %}#comments" title="{% trans 'Comments' %}"><i class="bi bi-chat-right "></i> {{ entry.comments.all.count }}</a>
             </small>
             {% if entry.user.first_name and entry.user.last_name %}
             <span>{{ entry.user.first_name }} {{ entry.user.last_name }}</span>

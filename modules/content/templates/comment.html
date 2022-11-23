@@ -1,4 +1,4 @@
-{% load static %}
+{% load i18n %}
 {% load crispy_forms_tags %}
 <section style="background-color: #eee;">
     <div class="container my-5 py-5">
@@ -33,7 +33,7 @@
                                     </div>
                                 </div>
                                 <div class="float-end mt-2 pt-1">
-                                    <button type="submit" class="btn btn-primary btn-sm">Comment</button>
+                                    <button type="submit" class="btn btn-primary btn-sm">{% trans 'Comment' %}</button>
                                 </div>
                             </div>
                         </form>

@@ -1,33 +1,34 @@
 from django import forms
 from django.contrib.auth.models import User
 from .models import Profile
+from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.forms import (
     AuthenticationForm,
     UserCreationForm,
     PasswordResetForm,
     SetPasswordForm,
-    PasswordChangeForm
+    PasswordChangeForm,
 )
 
 
 class UserPasswordChangedForm(PasswordChangeForm):
     old_password = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control',
-    }), label='Current password')
+    }), label=_('Current password'))
 
     new_password1 = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control',
-    }), label='New password',
-        help_text='<small class="form-text text-muted">'
-                  'Your password can’t be too similar to your other personal information.<br>'
-                  'Your password must contain at least 8 characters.<br>'
-                  'Your password can’t be a commonly used password.<br>'
-                  'Your password can’t be entirely numeric.'
-                  '</small>')
+    }), label=_('New password'),
+        help_text=_('<small class="form-text text-muted">'
+                    'Your password can’t be too similar to your other personal information.<br>'
+                    'Your password must contain at least 8 characters.<br>'
+                    'Your password can’t be a commonly used password.<br>'
+                    'Your password can’t be entirely numeric.'
+                    '</small>'))
 
     new_password2 = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control',
-    }), label='New password confirmation')
+    }), label=_('New password confirmation'))
 
     class Meta:
         model = User
@@ -37,17 +38,17 @@ class UserPasswordChangedForm(PasswordChangeForm):
 class UserSetPasswordForm(SetPasswordForm):
     new_password1 = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control',
-    }), label='New Password',
-        help_text='<small class="form-text text-muted">'
-                  'Your password can’t be too similar to your other personal information.<br>'
-                  'Your password must contain at least 8 characters.<br>'
-                  'Your password can’t be a commonly used password.<br>'
-                  'Your password can’t be entirely numeric.'
-                  '</small>')
+    }), label=_('New Password'),
+        help_text=_('<small class="form-text text-muted">'
+                    'Your password can’t be too similar to your other personal information.<br>'
+                    'Your password must contain at least 8 characters.<br>'
+                    'Your password can’t be a commonly used password.<br>'
+                    'Your password can’t be entirely numeric.'
+                    '</small>'))
 
     new_password2 = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control',
-    }), label='New password confirmation')
+    }), label=_('New password confirmation'))
 
     class Meta:
         model = User
@@ -57,8 +58,8 @@ class UserSetPasswordForm(SetPasswordForm):
 class UserPasswordResetForm(PasswordResetForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={
         'class': 'form-control',
-        'placeholder': 'Enter email',
-    }), help_text='<small class="form-text text-muted">Enter a valid email address.</small>')
+        'placeholder': _('Enter email'),
+    }), help_text=_('<small class="form-text text-muted">Enter a valid email address.</small>'))
 
     class Meta:
         model = User
@@ -68,12 +69,12 @@ class UserPasswordResetForm(PasswordResetForm):
 class UserLoginForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
-        'placeholder': 'Username',
+        'placeholder': _('Username'),
     }), required=True)
 
     password = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control',
-    }), label='Password', required=True)
+    }), label=_('Password'), required=True)
 
     class Meta:
         model = User
@@ -83,30 +84,30 @@ class UserLoginForm(AuthenticationForm):
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={
         'class': 'form-control',
-        'placeholder': 'Enter email',
-    }), help_text='<small class="form-text text-muted">Enter a valid email address.</small>')
+        'placeholder': _('Enter email'),
+    }), help_text=_('<small class="form-text text-muted">Enter a valid email address.</small>'))
 
     username = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
-        'placeholder': 'Enter username',
-    }), help_text='<small class="form-text text-muted">Required. 150 characters or fewer. '
-                  'Letters, digits and @/./+/-/_ only.</small>')
+        'placeholder': _('Enter username'),
+    }), help_text=_('<small class="form-text text-muted">Required. 150 characters or fewer. '
+                    'Letters, digits and @/./+/-/_ only.</small>'))
 
     password1 = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control',
     }), label='Password',
-        help_text='<small class="form-text text-muted">'
-                  'Your password can’t be too similar to your other personal information.<br>'
-                  'Your password must contain at least 8 characters.<br>'
-                  'Your password can’t be a commonly used password.<br>'
-                  'Your password can’t be entirely numeric.'
-                  '</small>')
+        help_text=_('<small class="form-text text-muted">'
+                    'Your password can’t be too similar to your other personal information.<br>'
+                    'Your password must contain at least 8 characters.<br>'
+                    'Your password can’t be a commonly used password.<br>'
+                    'Your password can’t be entirely numeric.'
+                    '</small>'))
 
     password2 = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control',
-    }), label='Password confirmation', help_text='<small class="form-text text-muted">'
-                                                 'Enter the same password as before, for verification.'
-                                                 '</small>')
+    }), label='Password confirmation', help_text=_('<small class="form-text text-muted">'
+                                                   'Enter the same password as before, for verification.'
+                                                   '</small>'))
 
     class Meta:
         model = User
@@ -116,12 +117,12 @@ class UserRegisterForm(UserCreationForm):
 class UserUpdateForm(forms.ModelForm):
     first_name = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
-        'placeholder': 'First name',
+        'placeholder': _('First name'),
     }), required=False)
 
     last_name = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
-        'placeholder': 'Last name',
+        'placeholder': _('Last name'),
     }), required=False)
 
     class Meta:
@@ -132,12 +133,12 @@ class UserUpdateForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
     date_of_birth = forms.DateField(widget=forms.DateInput(attrs={
         'class': 'form-control',
-        'placeholder': 'Birthday',
+        'placeholder': _('Birthday'),
     }), required=False)
 
-    image = forms.FileField(widget=forms.FileInput(attrs={
+    image = forms.ImageField(widget=forms.FileInput(attrs={
         'class': 'form-control-file',
-    }), required=False)
+    }), label=_('Profile Image'), required=False)
 
     class Meta:
         model = Profile

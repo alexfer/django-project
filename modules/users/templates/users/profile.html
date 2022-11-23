@@ -1,10 +1,10 @@
 {% extends "index.html" %}
 {% load crispy_forms_tags %}
+{% load i18n %}
 {% block title %} - Profile {% endblock title %}
 {% block content %}
-{% load static %}
 <div class="content-section shadow-sm">
-    <h2 class="border-bottom mb-4">Your Profile</h2>
+    <h2 class="border-bottom mb-4">{% trans 'Your Profile' %}</h2>
     <div class="media">
         <img class="rounded-circle me-3 account-img"
              {% if user.profile.image %}
@@ -29,7 +29,7 @@
             {{ profile_form|crispy }}
         </fieldset>
         <div class="form-group">
-            <button class="btn btn-outline-info" type="submit">Update</button>
+            <button class="btn btn-outline-info" type="submit">{% trans 'Update' %}</button>
         </div>
     </form>
 </div>
