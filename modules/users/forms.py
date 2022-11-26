@@ -95,7 +95,7 @@ class UserRegisterForm(UserCreationForm):
 
     password1 = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control',
-    }), label='Password',
+    }), label=_('Password'),
         help_text=_('<small class="form-text text-muted">'
                     'Your password can’t be too similar to your other personal information.<br>'
                     'Your password must contain at least 8 characters.<br>'
@@ -105,7 +105,7 @@ class UserRegisterForm(UserCreationForm):
 
     password2 = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control',
-    }), label='Password confirmation', help_text=_('<small class="form-text text-muted">'
+    }), label=_('Password confirmation'), help_text=_('<small class="form-text text-muted">'
                                                    'Enter the same password as before, for verification.'
                                                    '</small>'))
 
@@ -118,12 +118,12 @@ class UserUpdateForm(forms.ModelForm):
     first_name = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
         'placeholder': _('First name'),
-    }), required=False)
+    }), required=False, label=_('First name'),)
 
     last_name = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
         'placeholder': _('Last name'),
-    }), required=False)
+    }), required=False, label=_('Last name'),)
 
     class Meta:
         model = Profile
@@ -134,7 +134,7 @@ class ProfileUpdateForm(forms.ModelForm):
     date_of_birth = forms.DateField(widget=forms.DateInput(attrs={
         'class': 'form-control',
         'placeholder': _('Birthday'),
-    }), required=False)
+    }), required=False, label=_('Birthday'),)
 
     image = forms.ImageField(widget=forms.FileInput(attrs={
         'class': 'form-control-file',
