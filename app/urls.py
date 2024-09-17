@@ -19,9 +19,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', include('base.urls')),
-    path('', include('content.urls')),
-    path('', include('comment.urls')),
-    path('', include('users.urls')),
-    path('admin/', admin.site.urls),
+  path('', include('modules.base.urls')),
+  path('', include('modules.content.urls')),
+  path('', include('modules.comment.urls')),
+  path('', include('modules.users.urls')),
+  path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

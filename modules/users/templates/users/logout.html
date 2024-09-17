@@ -1,0 +1,13 @@
+{% extends "index.html" %}
+{% load i18n %}
+{% block title %} - {% trans 'You have been logged out' %} {% endblock title %}
+{% block content %}
+<div class="content-section shadow-sm">
+    <p>{% trans 'You have been logged out!' %}</p>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            <a href="{% url 'login' %}">{% trans 'Login Again' %}</a>
+        </small>
+    </div>
+</div>
+{% endblock content %}

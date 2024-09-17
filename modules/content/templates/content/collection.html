@@ -1,0 +1,42 @@
+{% extends "index.html" %}
+{% load i18n %}
+{% block title %} - {% trans 'Entry Collection' %} {% endblock title %}
+{% block content %}
+<div class="content-section shadow-sm">
+    <h1 class="border-bottom mb-4">{% trans 'Collection' %}</h1>
+    <table class="table table-hover table-sm table-responsive-sm collection">
+        <thead class="thead-dark">
+            <tr class="text-center">
+                <th scope="col">{% trans 'Title' %}</th>
+                <th scope="col">{% trans 'Date' %}</th>
+                <th scope="col">{% trans 'Comments' %}</th>
+                <th scope="col">{% trans 'Action' %}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entry in entries %}
+            <tr>
+                <td scope="row">
+                    <a target="_blank" href="{% url 'details' entry.slug %}">{{ entry.title }}</a>
+                </td>
+                <td class="text-nowrap align-middle">
+                    <small>{{ entry.created_at|date:"Y-m-d H:i" }}</small>
+                </td>
+                <td class="text-center align-middle">
+                    <a target="_blank" href="#">{{ entry.comments.all.count }}</a>
+                </td>
+                <td class="action text-nowrap">
+                    <a href="{% url 'change-entry' entry.slug %}" title="{% trans 'Change' %}"><i class="bi bi-pencil-square"></i></a>
+                    <a href="{% url 'destroy-entry' entry.id %}" title="{% trans 'Delete' %}"><i class="bi bi-x-circle"></i></a>
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="4" scope="row" class="text-center">{% trans 'Nothing to display' %}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% include 'pager.html' with entries=page_obj %}
+{% endblock content %}

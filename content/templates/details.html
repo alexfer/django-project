@@ -1,9 +1,0 @@
-{% extends "index.html" %}
-{% block title %} - {{ entry.title }} {% endblock title %}
-{% block content %}
-    <h2 class="mb-4">{{ entry.title }}</h2>
-    <small style="float: right;"><a href="#comment-form">Leave a comment</a></small>
-    <small class="text-muted">{{ entry.created_at|date:"F d, Y H:i" }}</small>
-    <div class="article-content text-justify mb-4">{{ entry.content|linebreaks|urlize }}</div>
-    {% include 'comment.html' %}
-{% endblock content %}

@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+{% block title %} - {{ entry.title }} {% endblock title %}
+{% block content %}
+<h2 class="mb-4">{{ entry.title }}</h2>
+<small style="float: right;"><a href="#comment-form">Leave a comment</a></small>
+{% if entry.user.first_name and entry.user.last_name %}
+<small>{{ entry.user.first_name }} {{ entry.user.last_name }}, </small>
+{% endif %}
+<small class="text-muted">{{ entry.created_at|date:"F d, Y H:i" }}</small>
+{% if entry.image %}
+<img src="/media/{{ entry.image }}" class="img-fluid mt-4 rounded mx-auto d-block"/>
+{% endif %}
+<div class="article-content text-justify mb-4">{{ entry.content|linebreaks|urlize }}</div>
+{% include 'comment.html' %}
+{% endblock content %}

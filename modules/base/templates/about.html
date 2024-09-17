@@ -1,0 +1,7 @@
+{% extends "index.html" %}
+{% load i18n %}
+{% block title %} - {% trans 'About Us' %}{% endblock title %}
+{% block content %}
+<h1 class="border-bottom mb-4">{% trans 'About Us' %}</h1>
+<p>{% autoescape off %}{{ description|linebreaks }}{% endautoescape %}</p>
+{% endblock content %}
