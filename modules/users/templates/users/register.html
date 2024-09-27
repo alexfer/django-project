@@ -1,0 +1,26 @@
+{% extends "index.html" %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% block title %} - {% trans 'Register' %} {% endblock title %}
+{% block content %}
+<div class="content-section shadow-sm">
+    {% if form.errors %}
+    {{ form.errors }}
+    {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">{% trans 'Join Today' %}</legend>
+            {{ form|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">{% trans 'Sign Up' %}</button>
+        </div>
+    </form>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            {% trans 'Already have an account?' %} <a class="ml-2" href="{% url 'login' %}">{% trans 'Sign In' %}</a>
+        </small>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,8 @@
+{% extends "index.html" %}
+{% load i18n %}
+{% block title %} - {% trans '500 Internal Server Error{% endblock title %}
+{% block content %}
+<div class="d-flex justify-content-center align-items-center" style="min-height: 100%;">
+    <h2 class="text-danger">{% trans '500 Internal Server Error' %}</h2>
+</div>
+{% endblock content %}

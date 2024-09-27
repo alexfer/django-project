@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+{% load i18n %}
+{% block title %} - {% trans 'Home' %} {% endblock title %}
+{% block content %}
+{% now "Y-m-d" as current_date %}
+{% load tz %}
+{% for entry in object_list %}
+<article class="media content-section shadow-sm">
+    <div class="media-body">
+        <div class="article-metadata">
+            <small style="float: right;">
+                <a href="{% url 'details' entry.slug  %}#comments" title="{% trans 'Comments' %}"><i class="bi bi-chat-right "></i> {{ entry.comments.all.count }}</a>
+            </small>
+            {% if entry.user.first_name and entry.user.last_name %}
+            <span>{{ entry.user.first_name }} {{ entry.user.last_name }}</span>
+            {% endif %}
+            {% if current_date == entry.created_at|date:"Y-m-d"  %}
+            <small class="text-muted">{{ entry.created_at|localtime|date:"l, H:i" }}</small>
+            {% else %}
+            <small class="text-muted">{{ entry.created_at|localtime|date:"l, F d, Y H:i" }}</small>
+            {% endif %}
+        </div>
+        <h4>
+            <a class="article-title" href="{% url 'details' entry.slug  %}" title="{{ entry.title }}">{{ entry.title }}</a>
+        </h4>
+        <p class="article-content">
+            {{ entry.content|slice:"0:150" }}...
+        </p>
+    </div>
+</article>
+{% endfor %}
+<div class="mb-4"><a href="{% url 'entries' %}">{% trans 'All entries' %}</a></div>
+{% endblock content %}

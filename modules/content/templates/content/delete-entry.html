@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+{% load i18n %}
+{% block title %} - {% trans 'Delete Entry' %}{% endblock title%}
+{% block content %}
+<div class="content-section shadow-sm">
+    <form method="post">
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-1">{% trans 'Delete Entry' %}</legend>
+        </fieldset>
+        {% csrf_token %}
+        <div class="alert alert-warning">{% trans 'Are you sure you want to delete:' %} <strong>{{ entry.title }}</strong></div>
+        <button type="submit" class="btn btn-danger">{% trans 'Delete' %}</button>
+        <a type="button" class="btn btn-light" href="{% url 'collection-entries' %}">{% trans 'Cancel' %}</a>
+    </form>
+</div>
+{% endblock content %}

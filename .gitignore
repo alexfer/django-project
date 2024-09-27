@@ -7,3 +7,4 @@ media/profile/*
 !media/profile/.gitkeep
 !media/files/.gitkeep
 !/media/default-profile.png
+!/media/placeholder.png

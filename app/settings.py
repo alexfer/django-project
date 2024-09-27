@@ -66,10 +66,10 @@ if DEBUG is True:
 # Application definition
 
 INSTALLED_APPS = [
-    'users.apps.UsersConfig',
-    'base.apps.BaseConfig',
-    'comment.apps.CommentConfig',
-    'content.apps.ContentConfig',
+    'modules.users.apps.UsersConfig',
+    'modules.base.apps.BaseConfig',
+    'modules.comment.apps.CommentConfig',
+    'modules.content.apps.ContentConfig',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -86,7 +86,6 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'app.urls'
@@ -148,9 +147,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
+LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
 LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'uk'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Kiev'
 
 USE_I18N = True
 
